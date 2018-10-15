@@ -5,24 +5,23 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : solid
-Version  : 5.50.0
-Release  : 4
-URL      : https://download.kde.org/stable/frameworks/5.50/solid-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/solid-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/solid-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 5
+URL      : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: solid-bin
-Requires: solid-lib
-Requires: solid-license
-Requires: solid-data
-BuildRequires : bison
+Requires: solid-bin = %{version}-%{release}
+Requires: solid-data = %{version}-%{release}
+Requires: solid-lib = %{version}-%{release}
+Requires: solid-license = %{version}-%{release}
 BuildRequires : bison-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : flex
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : systemd-dev
 
 %description
@@ -35,8 +34,8 @@ interacting with hardware independently of the underlying operating system.
 %package bin
 Summary: bin components for the solid package.
 Group: Binaries
-Requires: solid-data
-Requires: solid-license
+Requires: solid-data = %{version}-%{release}
+Requires: solid-license = %{version}-%{release}
 
 %description bin
 bin components for the solid package.
@@ -53,10 +52,10 @@ data components for the solid package.
 %package dev
 Summary: dev components for the solid package.
 Group: Development
-Requires: solid-lib
-Requires: solid-bin
-Requires: solid-data
-Provides: solid-devel
+Requires: solid-lib = %{version}-%{release}
+Requires: solid-bin = %{version}-%{release}
+Requires: solid-data = %{version}-%{release}
+Provides: solid-devel = %{version}-%{release}
 
 %description dev
 dev components for the solid package.
@@ -65,8 +64,8 @@ dev components for the solid package.
 %package lib
 Summary: lib components for the solid package.
 Group: Libraries
-Requires: solid-data
-Requires: solid-license
+Requires: solid-data = %{version}-%{release}
+Requires: solid-license = %{version}-%{release}
 
 %description lib
 lib components for the solid package.
@@ -81,25 +80,25 @@ license components for the solid package.
 
 
 %prep
-%setup -q -n solid-5.50.0
+%setup -q -n solid-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536438484
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539620311
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536438484
+export SOURCE_DATE_EPOCH=1539620311
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/solid
-cp COPYING.LIB %{buildroot}/usr/share/doc/solid/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/solid
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -174,6 +173,7 @@ popd
 /usr/share/locale/uk/LC_MESSAGES/solid5_qt.qm
 /usr/share/locale/zh_CN/LC_MESSAGES/solid5_qt.qm
 /usr/share/locale/zh_TW/LC_MESSAGES/solid5_qt.qm
+/usr/share/xdg/solid.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -223,10 +223,10 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Solid.so.5
-/usr/lib64/libKF5Solid.so.5.50.0
+/usr/lib64/libKF5Solid.so.5.51.0
 /usr/lib64/qt5/qml/org/kde/solid/libsolidextensionplugin.so
 /usr/lib64/qt5/qml/org/kde/solid/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/solid/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/solid/COPYING.LIB
