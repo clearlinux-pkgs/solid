@@ -6,7 +6,7 @@
 #
 Name     : solid
 Version  : 5.51.0
-Release  : 5
+Release  : 6
 URL      : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.51/solid-5.51.0.tar.xz.sig
@@ -17,6 +17,7 @@ Requires: solid-bin = %{version}-%{release}
 Requires: solid-data = %{version}-%{release}
 Requires: solid-lib = %{version}-%{release}
 Requires: solid-license = %{version}-%{release}
+BuildRequires : bison
 BuildRequires : bison-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -87,7 +88,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539620311
+export SOURCE_DATE_EPOCH=1539643144
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -95,7 +96,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539620311
+export SOURCE_DATE_EPOCH=1539643144
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/COPYING.LIB
