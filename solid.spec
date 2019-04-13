@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : solid
-Version  : 5.56.0
-Release  : 13
-URL      : https://download.kde.org/stable/frameworks/5.56/solid-5.56.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.56/solid-5.56.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.56/solid-5.56.0.tar.xz.sig
+Version  : 5.57.0
+Release  : 14
+URL      : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz.sig
 Summary  : Hardware integration and detection
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -83,23 +83,22 @@ license components for the solid package.
 
 
 %prep
-%setup -q -n solid-5.56.0
+%setup -q -n solid-5.57.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552143577
+export SOURCE_DATE_EPOCH=1555175505
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552143577
+export SOURCE_DATE_EPOCH=1555175505
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/COPYING.LIB
@@ -226,7 +225,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Solid.so.5
-/usr/lib64/libKF5Solid.so.5.56.0
+/usr/lib64/libKF5Solid.so.5.57.0
 /usr/lib64/qt5/qml/org/kde/solid/libsolidextensionplugin.so
 /usr/lib64/qt5/qml/org/kde/solid/qmldir
 
