@@ -6,7 +6,7 @@
 #
 Name     : solid
 Version  : 5.57.0
-Release  : 14
+Release  : 15
 URL      : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.57/solid-5.57.0.tar.xz.sig
@@ -17,6 +17,7 @@ Requires: solid-bin = %{version}-%{release}
 Requires: solid-data = %{version}-%{release}
 Requires: solid-lib = %{version}-%{release}
 Requires: solid-license = %{version}-%{release}
+BuildRequires : bison
 BuildRequires : bison-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -25,6 +26,7 @@ BuildRequires : media-player-info
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libudev)
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : systemd-dev
 
 %description
 # Solid
@@ -90,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555175505
+export SOURCE_DATE_EPOCH=1555345103
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -98,7 +100,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555175505
+export SOURCE_DATE_EPOCH=1555345103
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/COPYING.LIB
