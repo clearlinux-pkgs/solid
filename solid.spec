@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : solid
-Version  : 5.64.0
-Release  : 23
-URL      : https://download.kde.org/stable/frameworks/5.64/solid-5.64.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.64/solid-5.64.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.64/solid-5.64.0.tar.xz.sig
+Version  : 5.65.0
+Release  : 24
+URL      : https://download.kde.org/stable/frameworks/5.65/solid-5.65.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.65/solid-5.65.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.65/solid-5.65.0.tar.xz.sig
 Summary  : Hardware integration and detection
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -84,14 +84,15 @@ license components for the solid package.
 
 
 %prep
-%setup -q -n solid-5.64.0
+%setup -q -n solid-5.65.0
+cd %{_builddir}/solid-5.65.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573368448
+export SOURCE_DATE_EPOCH=1576535269
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -108,10 +109,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573368448
+export SOURCE_DATE_EPOCH=1576535269
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
-cp %{_builddir}/solid-5.64.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/solid-5.65.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -236,7 +237,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Solid.so.5
-/usr/lib64/libKF5Solid.so.5.64.0
+/usr/lib64/libKF5Solid.so.5.65.0
 /usr/lib64/qt5/qml/org/kde/solid/libsolidextensionplugin.so
 /usr/lib64/qt5/qml/org/kde/solid/qmldir
 
