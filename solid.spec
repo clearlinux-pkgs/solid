@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : solid
-Version  : 5.71.0
-Release  : 30
-URL      : https://download.kde.org/stable/frameworks/5.71/solid-5.71.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.71/solid-5.71.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.71/solid-5.71.0.tar.xz.sig
+Version  : 5.73.0
+Release  : 31
+URL      : https://download.kde.org/stable/frameworks/5.73/solid-5.73.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.73/solid-5.73.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.73/solid-5.73.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-3.0
@@ -85,15 +85,15 @@ license components for the solid package.
 
 
 %prep
-%setup -q -n solid-5.71.0
-cd %{_builddir}/solid-5.71.0
+%setup -q -n solid-5.73.0
+cd %{_builddir}/solid-5.73.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592239123
+export SOURCE_DATE_EPOCH=1597699713
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -105,15 +105,15 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592239123
+export SOURCE_DATE_EPOCH=1597699713
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
-cp %{_builddir}/solid-5.71.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/solid-5.71.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/solid/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/solid-5.73.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/solid/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/solid-5.73.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/solid/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -191,6 +191,7 @@ popd
 /usr/share/locale/zh_CN/LC_MESSAGES/solid5_qt.qm
 /usr/share/locale/zh_TW/LC_MESSAGES/solid5_qt.qm
 /usr/share/qlogging-categories5/solid.categories
+/usr/share/qlogging-categories5/solid.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
@@ -240,7 +241,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Solid.so.5
-/usr/lib64/libKF5Solid.so.5.71.0
+/usr/lib64/libKF5Solid.so.5.73.0
 /usr/lib64/qt5/qml/org/kde/solid/libsolidextensionplugin.so
 /usr/lib64/qt5/qml/org/kde/solid/qmldir
 
