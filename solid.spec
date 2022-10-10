@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : solid
-Version  : 5.98.0
-Release  : 53
-URL      : https://download.kde.org/stable/frameworks/5.98/solid-5.98.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.98/solid-5.98.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.98/solid-5.98.0.tar.xz.sig
+Version  : 5.99.0
+Release  : 54
+URL      : https://download.kde.org/stable/frameworks/5.99/solid-5.99.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.99/solid-5.99.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.99/solid-5.99.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.1 LGPL-3.0
@@ -83,15 +83,15 @@ license components for the solid package.
 
 
 %prep
-%setup -q -n solid-5.98.0
-cd %{_builddir}/solid-5.98.0
+%setup -q -n solid-5.99.0
+cd %{_builddir}/solid-5.99.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662941699
+export SOURCE_DATE_EPOCH=1665413566
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -107,7 +107,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662941699
+export SOURCE_DATE_EPOCH=1665413566
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/solid
 cp %{_builddir}/solid-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/solid/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
@@ -244,7 +244,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Solid.so.5
-/usr/lib64/libKF5Solid.so.5.98.0
+/usr/lib64/libKF5Solid.so.5.99.0
 /usr/lib64/qt5/qml/org/kde/solid/libsolidextensionplugin.so
 /usr/lib64/qt5/qml/org/kde/solid/qmldir
 
