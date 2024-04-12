@@ -3,5 +3,6 @@ libQt6DBus.so.6
 libQt6Gui.so.6
 libQt6Xml.so.6
 libc.so.6
+libmount.so.1
 libstdc++.so.6
 libudev.so.1
